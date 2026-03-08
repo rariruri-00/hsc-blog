@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="mt-16 border-t border-gray-200 bg-white py-8">
       <div className="mx-auto max-w-4xl px-4 text-center">
         <p className="text-sm text-gray-500">
-          © {new Date().getFullYear()} まんまるHSC｜繊細っ子の子育てちゃんねる
+          © {new Date().getFullYear()} HSCちゃんねる｜繊細っ子の子育てブログ
         </p>
         <p className="mt-1 text-xs text-gray-400">
           繊細な子（HSC）の子育て情報サイト

@@ -5,8 +5,8 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "まんまるHSC｜繊細っ子の子育てちゃんねる",
-    template: "%s | まんまるHSC｜繊細っ子の子育てちゃんねる",
+    default: "HSCちゃんねる｜繊細っ子の子育てブログ",
+    template: "%s | HSCちゃんねる｜繊細っ子の子育てブログ",
   },
   description:
     "繊細な子（HSC）の子育て情報サイト。HSPママがHSCきょうだい（小4娘・小2息子）との日常から気づいたことをお届けします。",
