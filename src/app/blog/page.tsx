@@ -14,8 +14,11 @@ export default async function BlogPage() {
   ]);
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12">
-      <h1 className="mb-8 text-2xl font-bold">記事一覧</h1>
+    <div className="mx-auto max-w-4xl px-4 py-12">
+      <h1 className="mb-8 flex items-center gap-2 text-2xl font-bold text-gray-800">
+        <span className="inline-block h-7 w-1 rounded-full bg-[var(--primary)]" />
+        記事一覧
+      </h1>
 
       {categories.length > 0 && (
         <div className="mb-8 flex flex-wrap gap-2">
@@ -23,7 +26,7 @@ export default async function BlogPage() {
             <Link
               key={cat._id}
               href={`/blog?cat=${cat.slug.current}`}
-              className="rounded-full bg-emerald-100 px-4 py-1 text-sm text-emerald-700 hover:bg-emerald-200"
+              className="rounded-full bg-[var(--primary-light)] px-4 py-1.5 text-sm font-medium text-[var(--primary)] transition-colors hover:bg-[var(--primary)] hover:text-white"
             >
               {cat.title}
             </Link>

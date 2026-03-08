@@ -2,6 +2,7 @@ import { getPostBySlug, getAllPosts } from "@/lib/queries";
 import { urlFor } from "@/sanity/image";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -31,16 +32,25 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-12">
+      {/* パンくずリスト */}
+      <nav className="mb-6 text-sm text-gray-400">
+        <Link href="/" className="hover:text-[var(--primary)]">ホーム</Link>
+        <span className="mx-2">›</span>
+        <Link href="/blog" className="hover:text-[var(--primary)]">記事一覧</Link>
+        <span className="mx-2">›</span>
+        <span className="text-gray-600">{post.title}</span>
+      </nav>
+
       {post.category && (
-        <span className="text-sm font-medium text-emerald-600">
+        <span className="inline-block rounded-full bg-[var(--primary-light)] px-3 py-1 text-xs font-medium text-[var(--primary)]">
           {post.category.title}
         </span>
       )}
-      <h1 className="mt-2 text-2xl font-bold leading-tight sm:text-3xl">
+      <h1 className="mt-3 text-2xl font-bold leading-tight text-gray-800 sm:text-3xl">
         {post.title}
       </h1>
       {post.publishedAt && (
-        <time className="mt-2 block text-sm text-gray-400">
+        <time className="mt-3 block text-sm text-gray-400">
           {new Date(post.publishedAt).toLocaleDateString("ja-JP")}
         </time>
       )}
@@ -57,7 +67,26 @@ export default async function PostPage({ params }: Props) {
         </div>
       )}
 
-      <div className="mt-8">{post.body && <PortableTextRenderer value={post.body} />}</div>
+      {/* 記事本文 */}
+      <div className="prose-koharu mt-10">
+        {post.body && <PortableTextRenderer value={post.body} />}
+      </div>
+
+      {/* 記事下CTA */}
+      <div className="mt-14 rounded-xl bg-[var(--primary-light)] p-6 text-center">
+        <p className="text-base font-medium text-gray-700">
+          最後まで読んでくれてありがとうございます🌱
+        </p>
+        <p className="mt-2 text-sm text-gray-600">
+          「うちもそう！」と思ったら、ぜひ他の記事も読んでみてね。
+        </p>
+        <Link
+          href="/blog"
+          className="mt-4 inline-block rounded-full bg-[var(--primary)] px-6 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
+        >
+          記事一覧を見る
+        </Link>
+      </div>
     </article>
   );
 }
