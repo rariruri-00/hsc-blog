@@ -2,12 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
 
 :root {
-  --background: #faf8f5;
-  --foreground: #3d3d3d;
+  --background: #f9f7f4;
+  --foreground: #333333;
   --primary: #5bb591;
   --primary-light: #e8f5ee;
+  --primary-dark: #3d8b6e;
   --accent: #f5a623;
   --warm-bg: #fdf6ee;
+  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --card-shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 @theme inline {
@@ -15,6 +18,7 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
   --color-accent: var(--accent);
   --color-warm-bg: var(--warm-bg);
 }
@@ -23,5 +27,47 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Zen Maru Gothic', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', sans-serif;
-  line-height: 1.8;
+  line-height: 1.9;
+  font-size: 16px;
+}
+
+/* 蛍光ペン風マーカー */
+.marker-yellow {
+  background: linear-gradient(transparent 60%, #fff3b0 60%);
+}
+.marker-green {
+  background: linear-gradient(transparent 60%, #c8f0d4 60%);
+}
+.marker-pink {
+  background: linear-gradient(transparent 60%, #fdd8d8 60%);
+}
+
+/* パステルボックス */
+.box-green {
+  background: #e8f5ee;
+  border-left: 4px solid #5bb591;
+  border-radius: 8px;
+  padding: 1.2em 1.5em;
+  margin: 1.5em 0;
+}
+.box-yellow {
+  background: #fff9e6;
+  border-left: 4px solid #f5a623;
+  border-radius: 8px;
+  padding: 1.2em 1.5em;
+  margin: 1.5em 0;
+}
+.box-blue {
+  background: #eef4fb;
+  border-left: 4px solid #6ba3d6;
+  border-radius: 8px;
+  padding: 1.2em 1.5em;
+  margin: 1.5em 0;
+}
+.box-pink {
+  background: #fdf0f0;
+  border-left: 4px solid #e88e8e;
+  border-radius: 8px;
+  padding: 1.2em 1.5em;
+  margin: 1.5em 0;
 }

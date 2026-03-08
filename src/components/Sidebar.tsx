@@ -10,37 +10,37 @@ export default async function Sidebar() {
   const recentPosts = posts.slice(0, 5);
 
   return (
-    <aside className="space-y-8">
+    <aside className="space-y-6">
       {/* プロフィール */}
-      <div className="rounded-xl bg-white p-6 shadow-sm">
-        <div className="mb-4 flex items-center gap-3">
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--primary-light)] text-2xl">
+      <div className="overflow-hidden rounded-xl bg-white" style={{ boxShadow: "var(--card-shadow)" }}>
+        <div className="bg-[var(--primary)] px-6 py-4 text-center">
+          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full border-4 border-white/30 bg-white text-3xl">
             🌱
           </div>
-          <div>
-            <p className="font-bold text-gray-800">こはる</p>
-            <p className="text-xs text-gray-500">HSCノート運営</p>
-          </div>
+          <p className="mt-2 text-lg font-bold text-white">こはる</p>
+          <p className="text-xs text-white/80">HSCノート運営</p>
         </div>
-        <p className="text-sm leading-relaxed text-gray-600">
-          HSPママ × HSCきょうだい（小4娘・小2息子）。「うちの子、大丈夫かな…？」同じ気持ちのママパパへ、繊細な子との暮らしで気づいたことを書いています🌿
-        </p>
+        <div className="px-5 py-4">
+          <p className="text-sm leading-relaxed text-gray-600">
+            HSPママ × HSCきょうだい（小4娘・小2息子）。「うちの子、大丈夫かな…？」同じ気持ちのママパパへ🌿
+          </p>
+        </div>
       </div>
 
       {/* カテゴリ */}
       {categories.length > 0 && (
-        <div className="rounded-xl bg-white p-6 shadow-sm">
-          <h3 className="mb-4 flex items-center gap-2 font-bold text-gray-800">
-            <span className="inline-block h-5 w-1 rounded-full bg-[var(--primary)]" />
+        <div className="rounded-xl bg-white p-5" style={{ boxShadow: "var(--card-shadow)" }}>
+          <h3 className="mb-3 border-b-2 border-[var(--primary)] pb-2 text-sm font-bold text-gray-800">
             カテゴリ
           </h3>
-          <ul className="space-y-2">
+          <ul className="space-y-1">
             {categories.map((cat) => (
               <li key={cat._id}>
                 <Link
                   href={`/blog?cat=${cat.slug.current}`}
-                  className="block rounded-lg px-3 py-2 text-sm text-gray-600 transition-colors hover:bg-[var(--primary-light)] hover:text-[var(--primary)]"
+                  className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-gray-600 transition-colors hover:bg-[var(--primary-light)] hover:text-[var(--primary)]"
                 >
+                  <span className="text-xs text-[var(--primary)]">▸</span>
                   {cat.title}
                 </Link>
               </li>
@@ -49,11 +49,10 @@ export default async function Sidebar() {
         </div>
       )}
 
-      {/* 人気記事 */}
+      {/* 最近の記事 */}
       {recentPosts.length > 0 && (
-        <div className="rounded-xl bg-white p-6 shadow-sm">
-          <h3 className="mb-4 flex items-center gap-2 font-bold text-gray-800">
-            <span className="inline-block h-5 w-1 rounded-full bg-[var(--primary)]" />
+        <div className="rounded-xl bg-white p-5" style={{ boxShadow: "var(--card-shadow)" }}>
+          <h3 className="mb-3 border-b-2 border-[var(--primary)] pb-2 text-sm font-bold text-gray-800">
             最近の記事
           </h3>
           <ul className="space-y-3">
@@ -63,10 +62,10 @@ export default async function Sidebar() {
                   href={`/blog/${post.slug.current}`}
                   className="group flex items-start gap-3"
                 >
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--primary-light)] text-xs font-bold text-[var(--primary)]">
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded bg-[var(--primary)] text-xs font-bold text-white">
                     {i + 1}
                   </span>
-                  <span className="text-sm text-gray-600 group-hover:text-[var(--primary)]">
+                  <span className="text-sm leading-snug text-gray-600 group-hover:text-[var(--primary)]">
                     {post.title}
                   </span>
                 </Link>
@@ -77,18 +76,25 @@ export default async function Sidebar() {
       )}
 
       {/* 検索 */}
-      <div className="rounded-xl bg-white p-6 shadow-sm">
-        <h3 className="mb-4 flex items-center gap-2 font-bold text-gray-800">
-          <span className="inline-block h-5 w-1 rounded-full bg-[var(--primary)]" />
+      <div className="rounded-xl bg-white p-5" style={{ boxShadow: "var(--card-shadow)" }}>
+        <h3 className="mb-3 border-b-2 border-[var(--primary)] pb-2 text-sm font-bold text-gray-800">
           検索
         </h3>
         <form action="/blog" method="GET">
-          <input
-            type="text"
-            name="q"
-            placeholder="キーワードで探す..."
-            className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 outline-none transition-colors focus:border-[var(--primary)] focus:bg-white"
-          />
+          <div className="flex overflow-hidden rounded-lg border border-gray-200">
+            <input
+              type="text"
+              name="q"
+              placeholder="キーワードで探す..."
+              className="flex-1 bg-gray-50 px-3 py-2.5 text-sm text-gray-700 outline-none"
+            />
+            <button
+              type="submit"
+              className="bg-[var(--primary)] px-4 text-sm font-medium text-white transition-opacity hover:opacity-90"
+            >
+              🔍
+            </button>
+          </div>
         </form>
       </div>
     </aside>
