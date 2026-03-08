@@ -18,14 +18,8 @@ export default function Sidebar() {
         </div>
         <div className="px-5 py-4">
           <p className="text-sm leading-relaxed text-gray-600">
-            内向型HSPママ × HSCきょうだい（小4娘・小2息子）。子どもの気持ちがわかるぶん、一緒にしんどくなることも多い毎日です🌿
+            内向型HSPママ × HSCきょうだい（小4娘・小2息子）。息子が小1のとき、発表会で固まる姿を見て胸が苦しくなりました。私も子どもの頃同じだったから、気持ちがわかる。同じ悩みを持つママパパへ🌿
           </p>
-          <Link
-            href="/profile"
-            className="mt-3 block text-center text-xs font-medium text-[var(--primary)] hover:underline"
-          >
-            プロフィールを見る →
-          </Link>
         </div>
       </div>
 
