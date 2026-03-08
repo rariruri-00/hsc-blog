@@ -9,10 +9,10 @@ export default function Header() {
             📗
           </span>
           <div>
-            <span className="text-xl font-bold text-[var(--primary)]">
+            <span className="text-2xl font-bold text-[var(--primary)] sm:text-3xl">
               HSCノート
             </span>
-            <span className="ml-1.5 hidden text-xs text-gray-400 sm:inline">
+            <span className="ml-2 hidden text-sm text-gray-400 sm:inline">
               繊細っ子の子育てガイド
             </span>
           </div>
