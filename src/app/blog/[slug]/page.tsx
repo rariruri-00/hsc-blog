@@ -14,9 +14,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return {};
+  const ogImage = `/api/og?title=${encodeURIComponent(post.title)}&category=${encodeURIComponent(getCategoryTitle(post.category))}`;
   return {
     title: post.title,
     description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      images: [{ url: ogImage, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [ogImage],
+    },
   };
 }
 
@@ -48,6 +60,14 @@ export default async function PostPage({ params }: Props) {
             className="overflow-hidden rounded-xl bg-white"
             style={{ boxShadow: "var(--card-shadow)" }}
           >
+            <div className="relative aspect-[16/9] overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`/api/og?title=${encodeURIComponent(post.title)}&category=${encodeURIComponent(getCategoryTitle(post.category))}`}
+                alt={post.title}
+                className="h-full w-full object-cover"
+              />
+            </div>
             <div className="px-6 py-8 sm:px-10 sm:py-10">
               <div className="flex items-center gap-3">
                 {post.category && (
