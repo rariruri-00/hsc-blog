@@ -75,13 +75,12 @@ export async function GET(req: NextRequest) {
         <div
           style={{
             display: "flex",
-            fontSize: mainTitle.length > 20 ? "48px" : "56px",
+            fontSize: mainTitle.length > 20 ? "42px" : "52px",
             fontWeight: 700,
             color: "#333333",
             textAlign: "center",
-            lineHeight: 1.4,
-            maxWidth: "1000px",
-            wordBreak: "break-word",
+            lineHeight: 1.5,
+            maxWidth: "1050px",
           }}
         >
           {mainTitle}
@@ -92,7 +91,7 @@ export async function GET(req: NextRequest) {
           <div
             style={{
               display: "flex",
-              fontSize: "32px",
+              fontSize: "30px",
               fontWeight: 700,
               color: "#5bb591",
               marginTop: "16px",
