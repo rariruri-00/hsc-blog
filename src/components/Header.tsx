@@ -30,6 +30,12 @@ export default function Header() {
           >
             記事一覧
           </Link>
+          <Link
+            href="/profile"
+            className="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-[var(--primary-light)] hover:text-[var(--primary)]"
+          >
+            プロフィール
+          </Link>
         </nav>
       </div>
     </header>

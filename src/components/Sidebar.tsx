@@ -14,12 +14,18 @@ export default function Sidebar() {
             🌱
           </div>
           <p className="mt-2 text-lg font-bold text-white">こはる</p>
-          <p className="text-xs text-white/80">HSCノート運営</p>
+          <p className="text-xs text-white/80">内向型HSPママ</p>
         </div>
         <div className="px-5 py-4">
           <p className="text-sm leading-relaxed text-gray-600">
-            HSPママ × HSCきょうだい（小4娘・小2息子）。「うちの子、大丈夫かな…？」同じ気持ちのママパパへ🌿
+            内向型HSPママ × HSCきょうだい（小4娘・小2息子）。子どもの気持ちがわかるぶん、一緒にしんどくなることも多い毎日です🌿
           </p>
+          <Link
+            href="/profile"
+            className="mt-3 block text-center text-xs font-medium text-[var(--primary)] hover:underline"
+          >
+            プロフィールを見る →
+          </Link>
         </div>
       </div>
 
