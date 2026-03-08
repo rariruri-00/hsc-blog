@@ -17,43 +17,20 @@ export default function HomePage() {
         <div className="flex flex-col gap-10 lg:flex-row">
           {/* メインコンテンツ */}
           <div className="flex-1">
-            {/* ヒーロー + 吹き出し */}
+            {/* サイト説明 */}
             <section
               className="overflow-hidden rounded-xl bg-white p-6 sm:p-8"
               style={{ boxShadow: "var(--card-shadow)" }}
             >
-              {/* 吹き出し会話 */}
-              <div className="balloon balloon-right">
-                <div
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-xl"
-                  style={{ background: "var(--pink-light)" }}
-                >
-                  👩
-                </div>
-                <div className="balloon-text">
-                  うちの子、繊細すぎて学校がつらそう…。<br />
-                  「慣れれば大丈夫」って言われるけど、ほんとに？
-                </div>
-              </div>
-
-              <div className="balloon">
-                <div
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-xl"
-                  style={{ background: "var(--primary-light)" }}
-                >
-                  🌱
-                </div>
-                <div className="balloon-text">
-                  わかります。私もずっとそう思ってました。<br />
-                  <strong>HSCきょうだい（小4娘・小2息子）</strong>を育てるHSPママが、同じ気持ちのママパパへ向けて書いています🌿
-                </div>
-              </div>
-
-              <div className="mt-4 text-center">
-                <p className="text-sm text-gray-500">
-                  繊細な子の子育て、ひとりで抱えないで。
-                </p>
-              </div>
+              <h2 className="text-lg font-bold text-gray-800">
+                HSCノートへようこそ
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                HSC（Highly Sensitive Child）は、生まれつき感受性が強く、周りの刺激に敏感な子どものこと。5人に1人がHSCだと言われています。
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                このブログでは、内向型HSPママの私が、HSCきょうだい（小4娘・小2息子）との日常で気づいた声かけや対応をまとめています。「うちの子、大丈夫かな…」と不安なママパパのヒントになれたらうれしいです🌿
+              </p>
             </section>
 
             {/* 記事セクション */}
