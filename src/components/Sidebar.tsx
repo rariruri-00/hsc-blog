@@ -18,7 +18,13 @@ export default function Sidebar() {
         </div>
         <div className="px-5 py-4">
           <p className="text-sm leading-relaxed text-gray-600">
-            内向型HSPママ × HSCきょうだい（小4娘・小2息子）。息子が小1のとき、発表会で固まる姿を見て胸が苦しくなりました。私も子どもの頃同じだったから、気持ちがわかる。同じ悩みを持つママパパへ🌿
+            内向型HSPママ × HSCきょうだい（小4娘・小2息子）。
+            <br />
+            <br />
+            息子が小1のとき、発表会で固まる姿を見て胸が苦しくなりました。
+            <br />
+            <br />
+            私も子どもの頃同じだったから、気持ちがわかる。同じ悩みを持つママパパへ🌿
           </p>
         </div>
       </div>
