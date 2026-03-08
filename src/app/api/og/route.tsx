@@ -3,10 +3,26 @@ import { NextRequest } from "next/server";
 
 export const runtime = "edge";
 
+async function loadFont() {
+  const res = await fetch(
+    "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap"
+  );
+  const css = await res.text();
+  const match = css.match(/src: url\((.+?)\) format/);
+  if (!match) return null;
+  const fontRes = await fetch(match[1]);
+  return fontRes.arrayBuffer();
+}
+
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const title = searchParams.get("title") || "HSCノート";
+  const rawTitle = searchParams.get("title") || "HSCノート";
   const category = searchParams.get("category") || "";
+
+  // 全角パイプなど表示できない文字を置換
+  const title = rawTitle.replace(/｜/g, " | ");
+
+  const fontData = await loadFont();
 
   return new ImageResponse(
     (
@@ -19,7 +35,7 @@ export async function GET(req: NextRequest) {
           justifyContent: "center",
           alignItems: "center",
           background: "linear-gradient(135deg, #e8f5ee 0%, #f9f7f4 50%, #fdf0f0 100%)",
-          fontFamily: "sans-serif",
+          fontFamily: fontData ? '"Noto Sans JP"' : "sans-serif",
           padding: "60px",
         }}
       >
@@ -119,6 +135,18 @@ export async function GET(req: NextRequest) {
     {
       width: 1200,
       height: 630,
+      ...(fontData
+        ? {
+            fonts: [
+              {
+                name: "Noto Sans JP",
+                data: fontData,
+                weight: 700 as const,
+                style: "normal" as const,
+              },
+            ],
+          }
+        : {}),
     }
   );
 }
