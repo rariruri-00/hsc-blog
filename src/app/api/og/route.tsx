@@ -19,8 +19,10 @@ export async function GET(req: NextRequest) {
   const rawTitle = searchParams.get("title") || "HSCノート";
   const category = searchParams.get("category") || "";
 
-  // 全角パイプなど表示できない文字を置換
-  const title = rawTitle.replace(/｜/g, " | ");
+  // 全角パイプで分割してサブタイトルに
+  const parts = rawTitle.split(/[｜|]/);
+  const mainTitle = parts[0].trim();
+  const subTitle = parts[1]?.trim() || "";
 
   const fontData = await loadFont();
 
@@ -69,11 +71,11 @@ export async function GET(req: NextRequest) {
           </div>
         )}
 
-        {/* Title */}
+        {/* Main Title */}
         <div
           style={{
             display: "flex",
-            fontSize: title.length > 30 ? "48px" : "56px",
+            fontSize: mainTitle.length > 20 ? "48px" : "56px",
             fontWeight: 700,
             color: "#333333",
             textAlign: "center",
@@ -82,8 +84,24 @@ export async function GET(req: NextRequest) {
             wordBreak: "break-word",
           }}
         >
-          {title}
+          {mainTitle}
         </div>
+
+        {/* Sub Title */}
+        {subTitle && (
+          <div
+            style={{
+              display: "flex",
+              fontSize: "32px",
+              fontWeight: 700,
+              color: "#5bb591",
+              marginTop: "16px",
+              textAlign: "center",
+            }}
+          >
+            {subTitle}
+          </div>
+        )}
 
         {/* Footer */}
         <div
