@@ -1,12 +1,8 @@
 import Link from "next/link";
-import { getAllCategories, getAllPosts } from "@/lib/queries";
+import { getAllPosts, categories } from "@/lib/posts";
 
-export default async function Sidebar() {
-  const [categories, posts] = await Promise.all([
-    getAllCategories(),
-    getAllPosts(),
-  ]);
-
+export default function Sidebar() {
+  const posts = getAllPosts();
   const recentPosts = posts.slice(0, 5);
 
   return (
@@ -28,26 +24,24 @@ export default async function Sidebar() {
       </div>
 
       {/* カテゴリ */}
-      {categories.length > 0 && (
-        <div className="rounded-xl bg-white p-5" style={{ boxShadow: "var(--card-shadow)" }}>
-          <h3 className="mb-3 border-b-2 border-[var(--primary)] pb-2 text-sm font-bold text-gray-800">
-            カテゴリ
-          </h3>
-          <ul className="space-y-1">
-            {categories.map((cat) => (
-              <li key={cat._id}>
-                <Link
-                  href={`/blog?cat=${cat.slug.current}`}
-                  className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-gray-600 transition-colors hover:bg-[var(--primary-light)] hover:text-[var(--primary)]"
-                >
-                  <span className="text-xs text-[var(--primary)]">▸</span>
-                  {cat.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <div className="rounded-xl bg-white p-5" style={{ boxShadow: "var(--card-shadow)" }}>
+        <h3 className="mb-3 border-b-2 border-[var(--primary)] pb-2 text-sm font-bold text-gray-800">
+          カテゴリ
+        </h3>
+        <ul className="space-y-1">
+          {categories.map((cat) => (
+            <li key={cat.slug}>
+              <Link
+                href={`/blog?cat=${cat.slug}`}
+                className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-gray-600 transition-colors hover:bg-[var(--primary-light)] hover:text-[var(--primary)]"
+              >
+                <span className="text-xs text-[var(--primary)]">▸</span>
+                {cat.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {/* 最近の記事 */}
       {recentPosts.length > 0 && (
@@ -57,9 +51,9 @@ export default async function Sidebar() {
           </h3>
           <ul className="space-y-3">
             {recentPosts.map((post, i) => (
-              <li key={post._id}>
+              <li key={post.slug}>
                 <Link
-                  href={`/blog/${post.slug.current}`}
+                  href={`/blog/${post.slug}`}
                   className="group flex items-start gap-3"
                 >
                   <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded bg-[var(--primary)] text-xs font-bold text-white">

@@ -1,31 +1,19 @@
 import Link from "next/link";
-import Image from "next/image";
-import type { Post } from "@/lib/queries";
-import { urlFor } from "@/sanity/image";
+import type { PostMeta } from "@/lib/posts";
+import { getCategoryTitle } from "@/lib/posts";
 
-export default function PostCard({ post }: { post: Post }) {
+export default function PostCard({ post }: { post: PostMeta }) {
   return (
     <article className="group overflow-hidden rounded-xl bg-white transition-all duration-200 hover:-translate-y-1 [box-shadow:var(--card-shadow)] hover:[box-shadow:var(--card-shadow-hover)]">
-      <Link href={`/blog/${post.slug.current}`} className="block">
-        {post.mainImage ? (
-          <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
-            <Image
-              src={urlFor(post.mainImage).width(640).height(360).url()}
-              alt={post.title}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-        ) : (
-          <div className="flex aspect-[16/9] items-center justify-center bg-[var(--primary-light)]">
-            <span className="text-5xl opacity-30">📗</span>
-          </div>
-        )}
+      <Link href={`/blog/${post.slug}`} className="block">
+        <div className="flex aspect-[16/9] items-center justify-center bg-[var(--primary-light)]">
+          <span className="text-5xl opacity-30">📗</span>
+        </div>
         <div className="p-5">
           <div className="flex items-center gap-2">
             {post.category && (
               <span className="inline-block rounded-full bg-[var(--primary)] px-2.5 py-0.5 text-xs font-medium text-white">
-                {post.category.title}
+                {getCategoryTitle(post.category)}
               </span>
             )}
             {post.publishedAt && (

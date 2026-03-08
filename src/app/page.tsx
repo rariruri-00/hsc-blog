@@ -1,10 +1,10 @@
-import { getAllPosts } from "@/lib/queries";
+import { getAllPosts } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
 import Sidebar from "@/components/Sidebar";
 import CategoryNav from "@/components/CategoryNav";
 
-export default async function HomePage() {
-  const posts = await getAllPosts();
+export default function HomePage() {
+  const posts = getAllPosts();
 
   return (
     <>
@@ -70,7 +70,7 @@ export default async function HomePage() {
               ) : (
                 <div className="grid gap-6 sm:grid-cols-2">
                   {posts.map((post) => (
-                    <PostCard key={post._id} post={post} />
+                    <PostCard key={post.slug} post={post} />
                   ))}
                 </div>
               )}

@@ -1,7 +1,6 @@
-import { getPostBySlug, getAllPosts } from "@/lib/queries";
-import { urlFor } from "@/sanity/image";
-import PortableTextRenderer from "@/components/PortableTextRenderer";
-import Image from "next/image";
+import { getPostBySlug, getAllPosts, getCategoryTitle } from "@/lib/posts";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { mdxComponents } from "@/components/mdx";
 import Link from "next/link";
 import Sidebar from "@/components/Sidebar";
 import { notFound } from "next/navigation";
@@ -13,7 +12,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post = getPostBySlug(slug);
   if (!post) return {};
   return {
     title: post.title,
@@ -21,14 +20,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export async function generateStaticParams() {
-  const posts = await getAllPosts();
-  return posts.map((post) => ({ slug: post.slug.current }));
+export function generateStaticParams() {
+  const posts = getAllPosts();
+  return posts.map((post) => ({ slug: post.slug }));
 }
 
 export default async function PostPage({ params }: Props) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post = getPostBySlug(slug);
   if (!post) notFound();
 
   return (
@@ -49,23 +48,11 @@ export default async function PostPage({ params }: Props) {
             className="overflow-hidden rounded-xl bg-white"
             style={{ boxShadow: "var(--card-shadow)" }}
           >
-            {post.mainImage && (
-              <div className="relative aspect-[16/9] overflow-hidden">
-                <Image
-                  src={urlFor(post.mainImage).width(960).height(540).url()}
-                  alt={post.title}
-                  fill
-                  priority
-                  className="object-cover"
-                />
-              </div>
-            )}
-
             <div className="px-6 py-8 sm:px-10 sm:py-10">
               <div className="flex items-center gap-3">
                 {post.category && (
                   <span className="inline-block rounded-full bg-[var(--primary)] px-2.5 py-0.5 text-xs font-medium text-white">
-                    {post.category.title}
+                    {getCategoryTitle(post.category)}
                   </span>
                 )}
                 {post.publishedAt && (
@@ -80,8 +67,8 @@ export default async function PostPage({ params }: Props) {
               </h1>
 
               {/* 記事本文 */}
-              <div className="mt-10">
-                {post.body && <PortableTextRenderer value={post.body} />}
+              <div className="mdx-content mt-10">
+                <MDXRemote source={post.content} components={mdxComponents} />
               </div>
             </div>
           </div>

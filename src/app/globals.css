@@ -129,6 +129,81 @@ body {
   border-color: transparent transparent transparent #fdf0f0;
 }
 
+/* MDXコンテンツ */
+.mdx-content h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 12px;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+.mdx-content h2::before {
+  content: '✦';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+.mdx-content h3 {
+  border-left: 4px solid var(--primary);
+  padding-left: 12px;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+.mdx-content p {
+  margin: 1rem 0;
+  line-height: 1.9;
+  color: #374151;
+}
+.mdx-content ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+.mdx-content ul li {
+  margin: 0.5rem 0;
+  line-height: 1.9;
+  color: #374151;
+}
+.mdx-content strong {
+  font-weight: 700;
+}
+.mdx-content .checklist-items ul {
+  list-style: none;
+  padding-left: 0;
+}
+.mdx-content .checklist-items li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 4px 0;
+}
+.mdx-content .checklist-items li::before {
+  content: '';
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  background: white;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
 /* カテゴリナビボックス */
 .cat-nav {
   display: grid;
