@@ -107,7 +107,7 @@ export default async function PostPage({ params }: Props) {
         </article>
 
         {/* サイドバー */}
-        <div className="w-full shrink-0 lg:sticky lg:top-24 lg:w-72 lg:self-start">
+        <div className="w-full shrink-0 lg:sticky lg:top-24 lg:w-80 lg:self-start">
           <Sidebar />
         </div>
       </div>

@@ -75,6 +75,38 @@ export default defineType({
       },
     }),
     defineArrayMember({
+      name: "balloon",
+      title: "吹き出し",
+      type: "object",
+      fields: [
+        {
+          name: "speaker",
+          title: "話者",
+          type: "string",
+          options: {
+            list: [
+              { title: "こはる（運営者）", value: "koharu" },
+              { title: "読者ママ", value: "reader" },
+            ],
+          },
+          initialValue: "koharu",
+        },
+        {
+          name: "text",
+          title: "セリフ",
+          type: "text",
+          rows: 3,
+        },
+      ],
+      preview: {
+        select: { title: "text", speaker: "speaker" },
+        prepare({ title, speaker }) {
+          const icon = speaker === "koharu" ? "🌱" : "👩";
+          return { title: `${icon} ${title || "吹き出し"}` };
+        },
+      },
+    }),
+    defineArrayMember({
       name: "affiliateBox",
       title: "アフィリエイトボックス",
       type: "object",

@@ -18,6 +18,22 @@ const components: PortableTextComponents = {
         </figure>
       );
     },
+    balloon: ({ value }) => {
+      const isReader = value.speaker === "reader";
+      return (
+        <div className={`balloon ${isReader ? "balloon-right" : ""}`}>
+          <div
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-xl"
+            style={{
+              background: isReader ? "var(--pink-light)" : "var(--primary-light)",
+            }}
+          >
+            {isReader ? "👩" : "🌱"}
+          </div>
+          <div className="balloon-text">{value.text}</div>
+        </div>
+      );
+    },
     checklist: ({ value }) => (
       <div className="my-8 rounded-xl border-2 border-[var(--primary)] border-opacity-30 bg-[var(--primary-light)] p-6">
         {value.title && (
@@ -38,36 +54,41 @@ const components: PortableTextComponents = {
       </div>
     ),
     affiliateBox: ({ value }) => (
-      <div className="my-8 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-        <div className="flex flex-col gap-4 sm:flex-row">
-          {value.image && (
-            <div className="shrink-0">
-              <Image
-                src={urlFor(value.image).width(160).height(160).url()}
-                alt={value.productName || ""}
-                width={160}
-                height={160}
-                className="rounded-lg"
-              />
+      <div className="my-8 overflow-hidden rounded-xl bg-white" style={{ boxShadow: "var(--card-shadow)" }}>
+        <div className="bg-[var(--accent)] px-4 py-2 text-center text-sm font-bold text-white">
+          おすすめ教材
+        </div>
+        <div className="p-6">
+          <div className="flex flex-col gap-4 sm:flex-row">
+            {value.image && (
+              <div className="shrink-0">
+                <Image
+                  src={urlFor(value.image).width(160).height(160).url()}
+                  alt={value.productName || ""}
+                  width={160}
+                  height={160}
+                  className="rounded-lg"
+                />
+              </div>
+            )}
+            <div className="flex-1">
+              <h3 className="text-lg font-bold text-gray-800">
+                {value.productName}
+              </h3>
+              {value.description && (
+                <p className="mt-2 text-sm leading-relaxed text-gray-600">{value.description}</p>
+              )}
+              {value.url && (
+                <a
+                  href={value.url}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="mt-4 inline-block rounded-full bg-[var(--accent)] px-8 py-3 text-sm font-bold text-white shadow-sm transition-all hover:brightness-110"
+                >
+                  {value.buttonText || "詳しく見る →"}
+                </a>
+              )}
             </div>
-          )}
-          <div className="flex-1">
-            <h3 className="text-lg font-bold text-gray-800">
-              {value.productName}
-            </h3>
-            {value.description && (
-              <p className="mt-2 text-sm leading-relaxed text-gray-600">{value.description}</p>
-            )}
-            {value.url && (
-              <a
-                href={value.url}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="mt-4 inline-block rounded-full bg-[var(--accent)] px-6 py-2.5 text-sm font-bold text-white shadow-sm transition-opacity hover:opacity-90"
-              >
-                {value.buttonText || "詳しく見る →"}
-              </a>
-            )}
           </div>
         </div>
       </div>
@@ -85,23 +106,27 @@ const components: PortableTextComponents = {
       </a>
     ),
     highlight: ({ children }) => (
-      <span className="bg-yellow-100 px-1 font-medium">{children}</span>
+      <span className="marker-yellow">{children}</span>
     ),
   },
   block: {
     h2: ({ children }) => (
-      <h2 className="mb-4 mt-12 border-l-4 border-[var(--primary)] pl-4 text-xl font-bold text-gray-800">
+      <h2 className="mb-4 mt-12 flex items-center gap-3 border-b-2 border-[var(--primary)] pb-3 text-xl font-bold text-gray-800">
+        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--primary)] text-sm text-white">✦</span>
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="mb-3 mt-8 text-lg font-bold text-gray-800">{children}</h3>
+      <h3 className="mb-3 mt-8 border-l-4 border-[var(--primary)] pl-3 text-lg font-bold text-gray-800">
+        {children}
+      </h3>
     ),
     h4: ({ children }) => (
       <h4 className="mb-2 mt-6 font-bold text-gray-800">{children}</h4>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="my-6 rounded-r-lg border-l-4 border-[var(--primary)] bg-[var(--primary-light)] py-4 pl-4 pr-4 text-gray-700">
+      <blockquote className="my-6 rounded-xl bg-[var(--warm-bg)] p-5 text-gray-700">
+        <span className="mb-2 block text-2xl leading-none opacity-30">❝</span>
         {children}
       </blockquote>
     ),
