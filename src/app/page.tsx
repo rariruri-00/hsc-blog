@@ -10,7 +10,7 @@ export default async function HomePage() {
       <section className="relative overflow-hidden rounded-2xl bg-[var(--primary-light)] p-8 sm:p-10">
         <div className="relative z-10">
           <h2 className="text-2xl font-bold text-[var(--primary)]">
-            こはるです🌱
+            まんまるHSCへようこそ🌱
           </h2>
           <p className="mt-3 text-base leading-relaxed text-gray-700">
             HSPママ × HSCきょうだい（小4娘・小2息子）

@@ -75,7 +75,7 @@ export default async function PostPage({ params }: Props) {
       {/* 記事下CTA */}
       <div className="mt-14 rounded-xl bg-[var(--primary-light)] p-6 text-center">
         <p className="text-base font-medium text-gray-700">
-          最後まで読んでくれてありがとうございます🌱
+          最後まで読んでくれてありがとうございます🌿
         </p>
         <p className="mt-2 text-sm text-gray-600">
           「うちもそう！」と思ったら、ぜひ他の記事も読んでみてね。

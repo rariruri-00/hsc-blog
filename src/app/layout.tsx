@@ -5,11 +5,11 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "こはる｜HSCの子育て",
-    template: "%s | こはる｜HSCの子育て",
+    default: "まんまるHSC｜繊細っ子の子育てちゃんねる",
+    template: "%s | まんまるHSC｜繊細っ子の子育てちゃんねる",
   },
   description:
-    "HSPママが繊細な子（HSC）の気持ちを言葉にするブログ。HSCきょうだい（小4娘・小2息子）の日常と気づき。",
+    "繊細な子（HSC）の子育て情報サイト。HSPママがHSCきょうだい（小4娘・小2息子）との日常から気づいたことをお届けします。",
 };
 
 export default function RootLayout({

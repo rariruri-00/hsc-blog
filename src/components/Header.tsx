@@ -7,10 +7,10 @@ export default function Header() {
         <div className="flex items-center justify-between">
           <Link href="/" className="block">
             <span className="text-2xl font-bold text-[var(--primary)]">
-              🌱 こはる
+              まんまるHSC
             </span>
             <span className="ml-2 text-sm text-gray-500">
-              HSCの子育て
+              繊細っ子の子育てちゃんねる
             </span>
           </Link>
           <nav className="flex gap-5 text-sm font-medium">
