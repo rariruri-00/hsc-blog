@@ -5,20 +5,7 @@ import { urlFor } from "@/sanity/image";
 
 export default function PostCard({ post }: { post: Post }) {
   return (
-    <article
-      className="group overflow-hidden rounded-xl bg-white transition-all duration-200"
-      style={{
-        boxShadow: "var(--card-shadow)",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = "var(--card-shadow-hover)";
-        e.currentTarget.style.transform = "translateY(-3px)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "var(--card-shadow)";
-        e.currentTarget.style.transform = "translateY(0)";
-      }}
-    >
+    <article className="group overflow-hidden rounded-xl bg-white transition-all duration-200 hover:-translate-y-1 [box-shadow:var(--card-shadow)] hover:[box-shadow:var(--card-shadow-hover)]">
       <Link href={`/blog/${post.slug.current}`} className="block">
         {post.mainImage ? (
           <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
